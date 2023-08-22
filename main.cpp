@@ -18,7 +18,7 @@ int main()
             std::vector<int>{0, 0, 0, 0, 0, 0, 0, 0},
             std::vector<int>{0, 0, 0, 0, 0, 0, 0, 0},
             std::vector<int>{2, 0, 2, 0, 2, 0, 2, 0},
-            std::vector<int>{0, 2, 0, 2, 0, 2, 0, 0},
+            std::vector<int>{0, 2, 0, 2, 0, 2, 0, 2},
             std::vector<int>{2, 0, 2, 0, 2, 0, 2, 0}
     };
 

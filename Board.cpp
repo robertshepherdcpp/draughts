@@ -20,8 +20,8 @@ auto Board::draw(sf::RenderWindow& window) -> void
 	{
 		for (int j = 0; j < pos[i].size(); j++)
 		{
-			if (pos[i][j] == 1) { window.draw(black_piece_sprite); }
-			else if (pos[i][j] == 2) { window.draw(white_piece_sprite); }
+			if (pos[i][j] == 1) { black_piece_sprite.setPosition(j * 25, i * 25); window.draw(black_piece_sprite); }
+			else if (pos[i][j] == 2) { white_piece_sprite.setPosition(j * 25, i * 25);  window.draw(white_piece_sprite); }
 		}
 	}
 }
