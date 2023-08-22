@@ -7,11 +7,11 @@ Board::Board(std::vector<std::vector<int>>& positions)
 {
 	pos = positions;
 
-	black_piece_texture.loadFromFile("black_checker.png");
-	white_piece_texture.loadFromFile("white_checker.png");
+	black_piece_texture.loadFromFile("black_piece.png");
+	white_piece_texture.loadFromFile("white_piece.png");
 
 	black_piece_sprite.setTexture(black_piece_texture);
-	white_piece_texture.setTexture(white_piece_texture);
+	white_piece_sprite.setTexture(white_piece_texture);
 }
 
 auto Board::draw(sf::RenderWindow& window) -> void

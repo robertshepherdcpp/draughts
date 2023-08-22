@@ -44,6 +44,7 @@ int main()
 
         window.clear();
         window.draw(board_sprite);
+        board.draw(window);
         window.display();
     }
 
