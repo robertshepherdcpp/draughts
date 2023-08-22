@@ -16,9 +16,9 @@ Board::Board(std::vector<std::vector<int>>& positions)
 
 auto Board::draw(sf::RenderWindow& window) -> void
 {
-	for (int i = 0; i < pos.size(); i++)
+	for (auto i : std::ranges::views::iota(0) | std::ranges::views::take(pos.size()))
 	{
-		for (int j = 0; j < pos[i].size(); j++)
+		for (auto j : std::ranges::views::iota(0) | std::ranges::views::take(pos[i].size()))
 		{
 			if (pos[i][j] == 1) { black_piece_sprite.setPosition(j * 25, i * 25); window.draw(black_piece_sprite); }
 			else if (pos[i][j] == 2) { white_piece_sprite.setPosition(j * 25, i * 25);  window.draw(white_piece_sprite); }
