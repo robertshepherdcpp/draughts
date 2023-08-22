@@ -29,6 +29,11 @@ int main()
     sf::Sprite board_sprite;
     board_sprite.setTexture(board_texture);
 
+    int position_x_from = 0;
+    int position_y_from = 0;
+
+    bool already_clicked = false;
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -37,6 +42,44 @@ int main()
             if (event.type == sf::Event::Closed)
             {
                 window.close();
+            }
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (already_clicked)
+                {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+
+                    int x_remainder = int(worldPos.x) % 25;
+                    int y_remainder = int(worldPos.y) % 25;
+
+                    int x_pos = (int(worldPos.x) - x_remainder) / 25;
+                    int y_pos = (int(worldPos.y) - y_remainder) / 25;
+
+                    if (board.at(position_x_from, position_y_from) == 1) { board.set(y_pos, x_pos, 1); }
+                    else if (board.at(position_x_from, position_y_from) == 2) { board.set(y_pos, x_pos, 2); }
+
+                    board.set(position_x_from, position_y_from, 0);
+
+                    already_clicked = false;
+                }
+                else
+                {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+
+                    int x_remainder = int(worldPos.x) % 25;
+                    int y_remainder = int(worldPos.y) % 25;
+
+                    int x_pos = (int(worldPos.x) - x_remainder) / 25;
+                    int y_pos = (int(worldPos.y) - y_remainder) / 25;
+
+                    position_x_from = y_pos;
+                    position_y_from = x_pos;
+
+                    already_clicked = true;
+
+                }
             }
         }
 
