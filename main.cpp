@@ -81,6 +81,22 @@ int main()
 
                 }
             }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Z)
+                {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+
+                    int x_remainder = int(worldPos.x) % 25;
+                    int y_remainder = int(worldPos.y) % 25;
+
+                    int x_pos = (int(worldPos.x) - x_remainder) / 25;
+                    int y_pos = (int(worldPos.y) - y_remainder) / 25;
+
+                    board.set(x_pos, y_pos, 0);
+                }
+            }
         }
 
         board.draw(window);
